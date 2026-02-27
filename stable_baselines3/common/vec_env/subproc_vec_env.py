@@ -147,7 +147,7 @@ class SubprocVecEnv(VecEnv):
         # Seeds and options are only used once
         self._reset_seeds()
         self._reset_options()
-        return _stack_obs(obs, self.observation_space), self.reset_infos
+        return _stack_obs(obs, self.observation_space), list(self.reset_infos)
 
     def close(self) -> None:
         if self.closed:
