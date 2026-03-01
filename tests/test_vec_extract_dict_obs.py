@@ -68,7 +68,8 @@ def test_extract_dict_obs():
 
     env = DictObsVecEnv()
     env = VecExtractDictObs(env, "rgb")
-    assert env.reset().shape == (4, 86, 86)
+    obs, _ = env.reset()
+    assert obs.shape == (4, 86, 86)
 
     for _ in range(10):
         obs, _, dones, infos = env.step([env.action_space.sample() for _ in range(env.num_envs)])
